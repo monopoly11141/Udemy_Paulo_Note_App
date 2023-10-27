@@ -1,11 +1,8 @@
 package com.example.udemy_paulo_note_app.screen
 
-import android.os.Build
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -28,10 +25,8 @@ import com.example.udemy_paulo_note_app.components.NoteButton
 import com.example.udemy_paulo_note_app.components.NoteInputText
 import com.example.udemy_paulo_note_app.data.NotesDataSource
 import com.example.udemy_paulo_note_app.model.Note
-import java.time.format.DateTimeFormatter
+import com.example.udemy_paulo_note_app.util.formatDateFromLongToString
 
-
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun NoteScreen(
     notes: List<Note>,
@@ -156,7 +151,6 @@ private fun TopBar() {
     )
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun NoteLazyColumnItem(
     modifier: Modifier = Modifier,
@@ -181,7 +175,8 @@ fun NoteLazyColumnItem(
             modifier = modifier
                 .clickable {
                     onNoteClicked(note)
-                }.padding(
+                }
+                .padding(
                     horizontal = 12.dp,
                     vertical = 8.dp
                 ),
@@ -191,12 +186,14 @@ fun NoteLazyColumnItem(
                 text = note.title,
                 style = MaterialTheme.typography.titleSmall
             )
+
             Text(
                 text = note.description,
                 style = MaterialTheme.typography.bodySmall
             )
+
             Text(
-                text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
+                text = formatDateFromLongToString(note.entryDate.time),
                 style = MaterialTheme.typography.labelMedium
             )
         }
@@ -204,7 +201,6 @@ fun NoteLazyColumnItem(
 
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Preview(showBackground = true)
 @Composable
 fun NoteScreenPreview() {

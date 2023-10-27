@@ -1,11 +1,8 @@
 package com.example.udemy_paulo_note_app.data
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.example.udemy_paulo_note_app.model.Note
 
 class NotesDataSource {
-    @RequiresApi(Build.VERSION_CODES.O)
     fun loadNotes(): List<Note> {
         return listOf(
             Note(title = "A good day", description = "We went on a vacation by the lake"),

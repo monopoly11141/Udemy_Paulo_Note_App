@@ -5,7 +5,6 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -27,8 +26,8 @@ fun NoteInputText(
         value = text,
         onValueChange = onTextChange,
         modifier = modifier,
-        colors = TextFieldDefaults.textFieldColors(
-            containerColor = Color.Transparent
+        colors = TextFieldDefaults.colors(
+            unfocusedContainerColor = Color.Transparent
         ),
         maxLines = maxLines,
         label = {
